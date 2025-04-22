@@ -8,4 +8,13 @@ sealed class AppStrings{
 
   ///>>>>text field hint text and error text<<<
 static const number="Enter number";
+
+///second app
+
+static const List<String> select=[
+  "+",
+  "-",
+  "x",
+  "/",
+];
 }
