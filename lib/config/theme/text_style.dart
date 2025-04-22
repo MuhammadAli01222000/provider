@@ -8,5 +8,7 @@ sealed class AppTextStyle{
   static const generate=TextStyle(color: AppColors.white,fontSize: AppDimens.d20,fontWeight: FontWeight.w700);
 static const red=TextStyle(color: Colors.redAccent,fontWeight: FontWeight.bold,fontSize: AppDimens.d25);
 static const error=TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: AppDimens.d25);
+static const math=TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: AppDimens.d50);
+static const variant=TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: AppDimens.d25);
 
 }

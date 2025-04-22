@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:providers/config/theme/dimens.dart';
+import 'package:provider/provider.dart';
 import 'package:providers/config/theme/theme.dart';
 import 'package:providers/second_app/core/widget/cards.dart';
-
-import '../../core/widgets/button.dart';
+import 'package:providers/second_app/page/second_page.dart';
 import '../../core/widgets/input_card.dart';
+import '../provider/second_app_provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,7 +21,6 @@ class _HomeState extends State<Home> {
   @override
   void dispose() {
     super.dispose();
-
     controller.dispose();
     textController1.dispose();
     textController2.dispose();
@@ -88,10 +87,29 @@ class _HomeState extends State<Home> {
               SizedBox(
                 width: AppDimens.d350,
                 height: AppDimens.d50,
-                child: AppButton(
-                  textController1: textController1,
-                  textController2: textController2,
-                  textController3: textController3,
+                child: ElevatedButton(
+                    onPressed: () {
+                      final n1 = int.parse(textController1.text);
+                      final n2 = int.parse(textController2.text);
+                      final n3 = int.parse(textController3.text);
+
+                      final provider = Provider.of<SecondAppProvider>(context, listen: false);
+                      provider.setInputs(
+                        add: 1,
+                        subtraction: 0,
+                        multiplication: 0,
+                        division: 0,
+                        number1: n1,
+                        number2: n2,
+                        number3: n3,
+                      );
+                      provider.listOne(n1: 1, n2: 0, n3: 0, n4: 0);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SecondPage()),
+                      );
+                    },
+                  child: const Text("Next Page"),
                 ),
               ),
             ],
