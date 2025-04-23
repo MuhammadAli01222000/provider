@@ -1,9 +1,5 @@
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
-
-import '../../services/app_controller.dart';
-
 class SecondAppProvider extends ChangeNotifier {
   int number1 = 0;
   int number2 = 0;
@@ -18,7 +14,6 @@ class SecondAppProvider extends ChangeNotifier {
   List<int> list2 = [];
   List<double> result = [];
 
-  // constructor o‘rniga default qiymatlar
   void setInputs({
     required int add,
     required int subtraction,
@@ -37,7 +32,15 @@ class SecondAppProvider extends ChangeNotifier {
     this.number3 = number3;
     notifyListeners();
   }
+  int _currentIndex = 0;
+  int get currentIndex => _currentIndex;
 
+  void next() {
+    if (_currentIndex < result.length - 1) {
+      _currentIndex++;
+      notifyListeners();
+    }
+  }
 
   ///list matematik amallar uchun
 
