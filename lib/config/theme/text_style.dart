@@ -10,5 +10,6 @@ static const red=TextStyle(color: Colors.redAccent,fontWeight: FontWeight.bold,f
 static const error=TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: AppDimens.d25);
 static const math=TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: AppDimens.d50);
 static const variant=TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: AppDimens.d25);
+static const nextPage=TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: AppDimens.d20);
 
 }

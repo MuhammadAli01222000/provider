@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
+import 'package:providers/services/app_controller.dart';
 class SecondAppProvider extends ChangeNotifier {
   int number1 = 0;
   int number2 = 0;
@@ -12,7 +13,7 @@ class SecondAppProvider extends ChangeNotifier {
 
   List<int> list1 = [];
   List<int> list2 = [];
-  List<double> result = [];
+  List<int> result = [];
 
   void setInputs({
     required int add,
@@ -44,7 +45,7 @@ class SecondAppProvider extends ChangeNotifier {
 
   ///list matematik amallar uchun
 
-  List<double> listOne({
+  List<int> listOne({
     required int n1,
     required int n2,
     required int n3,
@@ -61,36 +62,70 @@ class SecondAppProvider extends ChangeNotifier {
 
     result.clear();
 
-    if (n1 == 1) {
+    if (n1 == 0) {
       //add
+      print("ADD $list1 ");
+      print("ADD $list2 ");
       for (int i = 0; i < number3; i++) {
-        result.add(list1[i] + list2[i].toDouble());
+        result.add(list1[i] + list2[i]);
       }
+      print("ADD  result $result ");
+
     }
-    if (n2 == 2) {
+    if (n2 == 1) {
       // minus
+
       for (int i = 0; i < number3; i++) {
-        result.add(list1[i] - list2[i].toDouble());
+        result.add(list1[i] - list2[i]);
       }
+      print("minus $list1 ");
+      print("minus $list2 ");
+      print("minus res  $result ");
     }
-    if (n3 == 3) {
+    if (n3 == 2) {
       // kopaytirish
       for (int i = 0; i < number3; i++) {
-        result.add(list1[i] * list2[i].toDouble());
+        result.add(list1[i] * list2[i]);
       }
+      print("X $list1 ");
+      print("X $list2 ");
+      print("X res  $result ");
     }
-    if (n4 == 4) {
+    if (n4 == 3) {
       //bolish
       for (int i = 0; i < number3; i++) {
         if (list2[i] != 0) {
-          result.add(list1[i] / list2[i]);
+          result.add((list1[i] / list2[i]).round());
         } else {
           result.add(0);
         }
       }
+      print("bolish $list1 ");
+      print("bolish $list2 ");
+      print("bolish res  $result ");
     }
-    print(result);
+    //print(result);
     notifyListeners();
     return result;
   }
+
+  ///generate variant
+  List<int> variantlar(int index) {
+    // togri javob
+    int correctAnswer = result[index];
+
+/// notogti javob
+    final List<int> randomJavob = [correctAnswer];
+
+    while (randomJavob.length < 4) {
+      int sonlar= correctAnswer + ([-3, -2, -1, 1, 2, 3]..shuffle()).first;
+      if (!randomJavob.contains(sonlar)) {
+        randomJavob.add(sonlar);
+      }
+    }
+
+    randomJavob.shuffle(); /// shuffle qiilish
+    return randomJavob;
+  }
+
 }

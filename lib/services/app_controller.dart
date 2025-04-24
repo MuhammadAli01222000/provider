@@ -5,18 +5,34 @@ sealed class AppController {
     if (number <= number3 && number2 < number3) return null;
     return false;
   }
-
-  static List<int> mukammalSon(List<int> list) {
-    int mukammal = 0;
-    List<int> res = [6];
-    for (var i = 0; i < list.length; i++) {
-      if (i % i == 0) {
-        mukammal += i;
-      }
-      if (list[i] == mukammal) {
-        res.add(mukammal);
-      }
+static String math(int selectCard){
+    String belgi="+";
+    if(selectCard==1)belgi="-";
+    if(selectCard==2)belgi="X";
+    if(selectCard==3)belgi="/";
+    return belgi;
+}
+static int correct(int a,int b,int res,int selectCard){
+    int correct=0;
+    if(selectCard==0){
+      if(a+b==res) correct++;
     }
-    return res;
-  }
+    if(selectCard==1){
+      if(a-b==res) correct++;
+    }
+    if(selectCard==2){
+      if(a*b==res) correct++;
+    }
+    if(selectCard==3){
+      if(a~/b==res) correct++;
+    }
+
+
+    return correct;
+
+}
+static int wrong(int a,int b,int res,int selectCard){
+  int wrong=0;
+  return wrong;
+}
 }

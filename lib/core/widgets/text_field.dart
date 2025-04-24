@@ -9,7 +9,7 @@ class Input extends StatelessWidget {
 
   Input({super.key, required this.controller, required this.hintText}) {
     if (controller.text.isEmpty) {
-      controller.text = '1';
+      controller.text = '10';
     }
   }
 
